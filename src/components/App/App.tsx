@@ -5,6 +5,7 @@ import type { Votes } from "../../types/Votes";
 import type { VoteType } from "../../types/Votes";
 import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const [votes, setVotes] = useState<Votes>({
@@ -36,12 +37,17 @@ export default function App() {
   return (
     <>
       <CafeInfo />
-      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
+      <VoteOptions
+        onVote={handleVote}
+        onReset={resetVotes}
+        canReset={totalVotes !== 0 ? true : false}
+      />
       <VoteStats
         votes={votes}
         totalVotes={totalVotes}
         positiveRate={positiveRate}
       />
+      {totalVotes === 0 && <Notification />}
     </>
   );
 }

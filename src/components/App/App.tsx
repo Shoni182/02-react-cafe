@@ -1,4 +1,4 @@
-// import css from "./App.module.css";
+import css from "./App.module.css";
 import CafeInfo from "../CafeInfo/CafeInfo";
 import { useState } from "react";
 import type { Votes } from "../../types/Votes";
@@ -35,7 +35,7 @@ export default function App() {
     : 0;
 
   return (
-    <>
+    <div className={css.container}>
       <CafeInfo />
       <VoteOptions
         onVote={handleVote}
@@ -48,6 +48,6 @@ export default function App() {
         positiveRate={positiveRate}
       />
       {totalVotes === 0 && <Notification />}
-    </>
+    </div>
   );
 }

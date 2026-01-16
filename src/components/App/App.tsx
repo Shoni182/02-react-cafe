@@ -41,11 +41,15 @@ export default function App() {
         onReset={resetVotes}
         canReset={totalVotes !== 0 ? true : false}
       />
-      <VoteStats
-        votes={votes}
-        totalVotes={totalVotes}
-        positiveRate={positiveRate}
-      />
+
+      {totalVotes > 0 && (
+        <VoteStats
+          votes={votes}
+          totalVotes={totalVotes}
+          positiveRate={positiveRate}
+        />
+      )}
+
       {totalVotes === 0 && <Notification />}
     </div>
   );
